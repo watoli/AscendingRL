@@ -23,7 +23,7 @@ To get started with AscendingRL, you'll need Python installed on your system. We
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/AscendingRL.git
+   git clone https://github.com/watoli/AscendingRL.git
    ```
 
 2. Navigate into the directory:
@@ -33,7 +33,7 @@ To get started with AscendingRL, you'll need Python installed on your system. We
 
 3. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install -r scripts/requirements.txt
    ```
 
 ## Algorithms Covered

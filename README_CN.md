@@ -23,7 +23,7 @@
 
 1. 克隆此仓库：
    ```bash
-   git clone https://github.com/yourusername/AscendingRL.git
+   git clone https://github.com/watoli/AscendingRL.git
    ```
 
 2. 进入目录：
@@ -33,7 +33,7 @@
 
 3. 安装依赖：
    ```bash
-   pip install -r requirements.txt
+   pip install -r scripts/requirements.txt
    ```
 
 ## 覆盖的算法

@@ -1,0 +1,19 @@
+absl-py==2.1.0
+colorama==0.4.6
+filelock==3.13.1
+grpcio==1.62.2
+kiwisolver==1.4.4
+matplotlib==3.9.1
+networkx==3.2.1
+numpy==1.26.3
+pip==24.0
+protobuf==4.25.3
+pyyaml  # 可选
+setuptools==69.5.1
+six==1.16.0
+tensorboard==2.17.0
+torch==2.4.0+cu124
+torchaudio==2.4.0+cu124
+torchvision==0.19.0+cu124
+tqdm==4.66.4
+typing-extensions==4.9.0
