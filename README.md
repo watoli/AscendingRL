@@ -4,6 +4,8 @@
 
 [English](README.md) | [中文](README_CN.md)
 
+![CartPole Simulation](./data/resources/images/cart_pole.gif)
+
 ## Introduction
 
 Welcome to AscendingRL, a project dedicated to exploring and advancing the field of Reinforcement Learning (RL). This project is a comprehensive journey that begins with the recreation of classic RL algorithms using Gymnasium, an updated version of the well-known OpenAI Gym library.

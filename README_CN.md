@@ -4,6 +4,8 @@
 
 [English](README.md) | [中文](README_CN.md)
 
+![CartPole Simulation](./data/resources/images/cart_pole.gif)
+
 ## 介绍
 
 欢迎来到AscendingRL，这是一个致力于探索和推进强化学习（RL）领域的项目。本项目是一段全面的旅程，从使用Gymnasium（OpenAI Gym的更新版本）重现经典RL算法开始。
