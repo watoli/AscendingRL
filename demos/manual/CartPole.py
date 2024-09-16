@@ -1,3 +1,4 @@
+import random
 import gym
 import numpy as np
 import pygame
@@ -39,27 +40,41 @@ def get_user_action():
     for key, action in action_map.items():
         if keys[key]:
             return action
-    return 0
+    return random.randint(0, 1)
 
-def plot_landing_data(times, positions, velocities, output_path):
-    plt.figure(figsize=(14, 6))
+def plot_landing_data(times, positions, velocities, angles, angular_velocities, rewards, output_path):
+    plt.figure(figsize=(14, 8))
 
-    plt.subplot(1, 2, 1)
+    plt.subplot(2, 2, 1)
     plt.plot(times, positions, label='位置')
     plt.xlabel('时间 (秒)')
     plt.ylabel('位置 (米)')
     plt.title('位置随时间变化')
     plt.legend()
 
-    plt.subplot(1, 2, 2)
+    plt.subplot(2, 2, 2)
     plt.plot(times, velocities, label='速度', color='orange')
     plt.xlabel('时间 (秒)')
     plt.ylabel('速度 (米/秒)')
     plt.title('速度随时间变化')
     plt.legend()
 
+    plt.subplot(2, 2, 3)
+    plt.plot(times, angles, label='角度', color='green')
+    plt.xlabel('时间 (秒)')
+    plt.ylabel('角度 (弧度)')
+    plt.title('角度随时间变化')
+    plt.legend()
+
+    plt.subplot(2, 2, 4)
+    plt.plot(times, angular_velocities, label='角速度', color='red')
+    plt.xlabel('时间 (秒)')
+    plt.ylabel('角速度 (弧度/秒)')
+    plt.title('角速度随时间变化')
+    plt.legend()
+
     plt.tight_layout()
-    plt.savefig(os.path.join(output_path, 'cart_pole.png'))
+    plt.savefig(os.path.join(output_path, 'cart_pole_advanced.png'))
     plt.close()
 
 def save_gif(frames, output_path):
@@ -76,6 +91,9 @@ def run_cartpole(random_seed=42, save_gif_path=None, save_plot_path=None):
     times = []
     positions = []
     velocities = []
+    angles = []
+    angular_velocities = []
+    rewards = []
 
     # 用于保存 GIF 帧的列表
     frames = []
@@ -113,6 +131,9 @@ def run_cartpole(random_seed=42, save_gif_path=None, save_plot_path=None):
         times.append(current_time)
         positions.append(x_pos)
         velocities.append(x_vel)
+        angles.append(theta)
+        angular_velocities.append(theta_dot)
+        rewards.append(total_reward)
 
         done = terminated or truncated
         time.sleep(0.1)
@@ -125,7 +146,7 @@ def run_cartpole(random_seed=42, save_gif_path=None, save_plot_path=None):
 
     # 生成数据图表
     if save_plot_path:
-        plot_landing_data(times, positions, velocities, save_plot_path)
+        plot_landing_data(times, positions, velocities, angles, angular_velocities, rewards, save_plot_path)
 
     env.close()
     pygame.quit()
