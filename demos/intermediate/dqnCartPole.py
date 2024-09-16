@@ -23,3 +23,13 @@ steps=0
 for _ in range(1000):
     action = env.action_space.sample()
     observation, reward, terminated, truncated, info = env.step(action)
+
+
+    if terminated or truncated:
+        print(f"Episode finished after {steps} steps")
+        observation, info = env.reset()
+        steps = 0
+    else:
+        steps += 1
+
+env.close()
