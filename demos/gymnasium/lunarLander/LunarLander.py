@@ -12,7 +12,7 @@ import os
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # 设置 GIF 路径为相对于项目根目录
-gif_path = os.path.join(project_root, 'results', 'manual', 'lunar_lander.gif')
+gif_path = os.path.join(project_root, 'demos', 'gymnasium','lunarLander', 'result', 'lunar_lander.gif')
 
 
 # 设置 matplotlib 字体，以正常显示中文字符
