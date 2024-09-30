@@ -36,17 +36,19 @@ def train_on_policy_agent(env, agent, num_episodes):
         with tqdm(total=int(num_episodes / 10), desc='Iteration %d' % i) as pbar:
             for i_episode in range(int(num_episodes / 10)):
                 episode_return = 0
-                transition_dict = {'states': [], 'actions': [], 'next_states': [], 'rewards': [], 'dones': []}
+                transition_dict = {'state': [], 'action': [], 'reward': [], 'next_state': [], 'terminated': [],'truncated': [], 'info': []}
                 state = env.reset()
                 done = False
                 while not done:
                     action = agent.take_action(state)
-                    next_state, reward, done, _ = env.step(action)
-                    transition_dict['states'].append(state)
-                    transition_dict['actions'].append(action)
-                    transition_dict['next_states'].append(next_state)
-                    transition_dict['rewards'].append(reward)
-                    transition_dict['dones'].append(done)
+                    next_state, reward, terminated, truncated, info = env.step(action)
+                    transition_dict['state'].append(state)
+                    transition_dict['action'].append(action)
+                    transition_dict['reward'].append(reward)
+                    transition_dict['next_state'].append(next_state)
+                    transition_dict['terminated'].append(terminated)
+                    transition_dict['truncated'].append(truncated)
+                    transition_dict['info'].append(info)
                     state = next_state
                     episode_return += reward
                 return_list.append(episode_return)
@@ -73,9 +75,8 @@ def train_off_policy_agent(env, agent, num_episodes, replay_buffer, minimal_size
                     state = next_state
                     episode_return += reward
                     if replay_buffer.size() > minimal_size:
-                        b_s, b_a, b_r, b_ns, b_d = replay_buffer.sample(batch_size)
-                        transition_dict = {'states': b_s, 'actions': b_a, 'next_states': b_ns, 'rewards': b_r,
-                                           'dones': b_d}
+                        b_s, b_a, b_r, b_ns,b_te, b_tr, b_i = replay_buffer.sample(batch_size)
+                        transition_dict = {'state': b_s, 'action': b_a, 'reward': b_r, 'next_state': b_ns, 'terminated': b_te, 'truncated': b_tr, 'info': b_i}
                         agent.update(transition_dict)
                 return_list.append(episode_return)
                 if (i_episode + 1) % 10 == 0:

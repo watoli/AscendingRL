@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/demos/gymnasium/cartPole/weights/checkpoints" />
     </content>
-    <orderEntry type="jdk" jdkName="lts182" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="torch241" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
