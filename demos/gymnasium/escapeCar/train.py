@@ -179,8 +179,8 @@ def visualize(env, policy_net, save_gif_path=None):
 
         # Capture the current state of the environment
         fig, ax = plt.subplots()
-        ax.plot([pos[0] for pos in positions_A], [pos[1] for pos in positions_A], label='Car A')
-        ax.plot([pos[0] for pos in positions_B], [pos[1] for pos in positions_B], label='Car B')
+        ax.plot([pos[0] for pos in positions_A], [pos[1] for pos in positions_A], label='Car A', color='red')
+        ax.plot([pos[0] for pos in positions_B], [pos[1] for pos in positions_B], label='Car B', color='blue')
         ax.scatter([0], [50], color='red', label='Start A')
         ax.scatter([100], [50], color='blue', label='Start B')
         ax.legend()
